@@ -1,6 +1,7 @@
 import {
   NotFoundException,
   InternalServerErrorException,
+  HttpException,
 } from '@nestjs/common';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Test, TestingModule } from '@nestjs/testing';
@@ -73,11 +74,16 @@ describe('UserService', () => {
 
   describe('When create a user', () => {
     it('Should create a user', async () => {
-      const user = service.createUser(mockAddAccountParams);
+      const user = await service.createUser(mockAddAccountParams);
 
       expect(mockRepository.create).toBeCalledWith(mockAddAccountParams);
       expect(mockRepository.save).toBeCalledTimes(1);
-      expect(user).resolves.toBe(mockUserModel);
+      expect(user.email).toBe(mockAddAccountParams.email);
+      expect(user.name).toBe(mockAddAccountParams.name);
+    });
+    it('Should not create a user', async () => {
+      const duplicatedUser = service.createUser(mockAddAccountParams);
+      expect(duplicatedUser).rejects.toThrow(HttpException);
     });
   });
 

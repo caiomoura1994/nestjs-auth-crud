@@ -1,4 +1,4 @@
-import { hashSync } from "bcrypt"
+import { hashSync } from 'bcrypt';
 
 export const hashPasswordTransform = {
   to(password: string): string {
@@ -6,5 +6,5 @@ export const hashPasswordTransform = {
   },
   from(hash: string): string {
     return hash;
-  }
-}
+  },
+};

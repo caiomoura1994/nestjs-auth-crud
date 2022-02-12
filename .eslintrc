@@ -20,7 +20,7 @@
   },
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": [
-      "error"
+      "off"
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/interface-name-prefix": "off",

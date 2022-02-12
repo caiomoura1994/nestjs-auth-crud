@@ -5,17 +5,15 @@ import { AuthType } from './dto/auth.type';
 
 @Resolver('Auth')
 export class AuthResolver {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   @Mutation(() => AuthType)
-  public async login(
-    @Args('data') data: AuthInput
-  ): Promise<AuthType> {
+  public async login(@Args('data') data: AuthInput): Promise<AuthType> {
     const response = await this.authService.validateUser(data);
 
     return {
       user: response.user,
-      token: response.token
-    }
+      token: response.token,
+    };
   }
 }
