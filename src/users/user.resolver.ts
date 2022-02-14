@@ -27,6 +27,7 @@ export class UserResolver {
     return this.userService.getUserByEmail(email);
   }
 
+  @UseGuards(GqlAuthGuard)
   @Query(() => [User])
   async users(): Promise<User[]> {
     return await this.userService.findAllUsers();
