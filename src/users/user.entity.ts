@@ -7,8 +7,8 @@ import { Instance } from '../instances/entities/instance.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  @Field(() => ID)
-  id: string;
+  @Field(() => ID, { nullable: true })
+  id?: string;
 
   @Column()
   name: string;
@@ -25,6 +25,7 @@ export class User {
   @OneToMany(
     () => Instance,
     instance => instance.id,
+    { nullable: true },
   )
-  instances: Instance[];
+  instances?: Instance[];
 }

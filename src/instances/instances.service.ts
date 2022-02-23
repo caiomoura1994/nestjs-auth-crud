@@ -21,7 +21,7 @@ export class InstancesService {
     return this.instanceRepository.save(newInstance);
   }
 
-  async findAllByOwner(ownerId) {
+  async findAllByOwner(ownerId: string) {
     return this.instanceRepository.find({ where: { owner: ownerId } });
   }
 
