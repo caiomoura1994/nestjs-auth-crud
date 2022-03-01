@@ -7,9 +7,9 @@ module.exports = {
   database: process.env.DB_NAME,
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: process.env.DB_SYNC == 'true',
-  migrationsTableName: 'custom_migration_table',
-  migrations: ['migrations/*.ts'],
+  migrationsTableName: 'migrations',
+  migrations: ['src/migrations/*.js'],
   cli: {
-    migrationsDir: 'migrations',
+    migrationsDir: 'src/migrations',
   },
 };

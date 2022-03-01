@@ -1,11 +1,17 @@
 import { ObjectType, Field, ID, HideField } from '@nestjs/graphql';
 import { hashPasswordTransform } from '../common/transformers/crypto-transform';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  BaseEntity,
+} from 'typeorm';
 import { Instance } from '../instances/entities/instance.entity';
 
 @ObjectType()
 @Entity()
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID, { nullable: true })
   id?: string;

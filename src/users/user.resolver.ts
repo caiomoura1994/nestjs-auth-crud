@@ -60,8 +60,8 @@ export class UserResolver {
   }
 
   @ResolveField(() => [Instance])
-  async invoices(@Parent() user: User) {
-    const instances = await this.instanceService.findAllByOwner(user.id);
-    return instances;
+  async instances(@Parent() user: User) {
+    const instancesService = await this.instanceService.findAllByOwner(user.id);
+    return instancesService;
   }
 }

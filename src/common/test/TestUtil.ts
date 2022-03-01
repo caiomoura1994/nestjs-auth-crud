@@ -16,13 +16,13 @@ export const mockUpdateUserParams: UpdateUserInput = {
   email: 'email-updated@email.com',
 };
 
-export const mockUserModel: User = {
+export const mockUserModel: any = {
   id: '1',
   ...mockAddAccountParams,
   instances: [],
 };
 
-export const mockUpdatedUserModel: User = {
+export const mockUpdatedUserModel: any = {
   ...mockUserModel,
   email: 'updated-email@email.com',
 };

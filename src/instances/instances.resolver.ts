@@ -1,4 +1,12 @@
-import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ID,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { InstancesService } from './instances.service';
 import { Instance } from './entities/instance.entity';
 import { CreateInstanceInput } from './dto/create-instance.input';
@@ -46,5 +54,11 @@ export class InstancesResolver {
   @Mutation(() => Instance)
   removeInstance(@Args('id', { type: () => ID }) id: string) {
     return this.instancesService.remove(id);
+  }
+
+  @ResolveField(() => User)
+  async owner(@Parent() instance: Instance) {
+    console.log('instance', instance.owner);
+    return instance.owner;
   }
 }

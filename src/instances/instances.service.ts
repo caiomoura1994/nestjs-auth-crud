@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/users/user.entity';
 import { Repository } from 'typeorm';
 import { CreateInstanceInput } from './dto/create-instance.input';
 import { UpdateInstanceInput } from './dto/update-instance.input';
@@ -14,10 +15,18 @@ export class InstancesService {
   constructor(
     @InjectRepository(Instance)
     private instanceRepository: Repository<Instance>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
   ) {}
 
   async create(createInstanceInput: CreateInstanceInput) {
-    const newInstance = this.instanceRepository.create(createInstanceInput);
+    const owner = await this.userRepository.findOne(
+      createInstanceInput.ownerId,
+    );
+    const newInstance = this.instanceRepository.create({
+      ...createInstanceInput,
+      owner,
+    });
     return this.instanceRepository.save(newInstance);
   }
 
@@ -34,10 +43,14 @@ export class InstancesService {
   }
 
   async update(id: string, updateInstanceInput: UpdateInstanceInput) {
+    const owner = await this.userRepository.findOne(
+      updateInstanceInput.ownerId,
+    );
     const findedInstance = await this.findOne(id);
     return this.instanceRepository.save({
       ...findedInstance,
       ...updateInstanceInput,
+      owner,
     });
   }
 
