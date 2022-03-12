@@ -32,6 +32,6 @@ export class CreateInstanceInput {
   webhookAfterReceive?: string;
 
   @IsString()
-  @IsNotEmpty()
-  ownerId: string;
+  @IsOptional()
+  ownerId?: string;
 }

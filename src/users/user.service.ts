@@ -32,7 +32,7 @@ export class UserService {
   async getUserById(id: string): Promise<User> {
     const user = await this.userRepository.findOne(id);
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
     return user;
   }
@@ -40,7 +40,7 @@ export class UserService {
   async getUserByEmail(email: string): Promise<User> {
     const user = await this.userRepository.findOne({ where: { email } });
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
     return user;
   }

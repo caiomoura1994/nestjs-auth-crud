@@ -19,21 +19,27 @@ export class Instance extends BaseEntity {
   name: string;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
   isActived: boolean;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
   zApiId?: string;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
   zApiToken: string;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
   webhookAfterSend: string;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
   webhookAfterDisconnect: string;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
   webhookAfterReceive: string;
 
   @ManyToOne(

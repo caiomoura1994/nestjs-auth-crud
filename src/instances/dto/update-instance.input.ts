@@ -44,6 +44,6 @@ export class UpdateInstanceInput extends PartialType(CreateInstanceInput) {
   webhookAfterReceive?: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   ownerId?: string;
 }
