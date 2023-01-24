@@ -90,11 +90,13 @@ describe('UserService', () => {
   describe('When update User', () => {
     it('Should update a user', async () => {
       service.getUserById = jest.fn().mockReturnValueOnce(mockUserModel);
+      await service.updateUser(mockUpdateUserParams);
 
-      const userUpdated = service.updateUser(mockUpdateUserParams);
-
+      expect(mockRepository.save).toBeCalledWith({
+        ...mockUserModel,
+        ...mockUpdateUserParams,
+      });
       expect(service.getUserById).toHaveBeenCalledWith(mockUpdateUserParams.id);
-      expect(userUpdated).resolves.toBe(mockUpdatedUserModel);
     });
 
     describe('When delete User', () => {
