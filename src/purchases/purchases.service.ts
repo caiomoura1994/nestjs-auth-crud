@@ -3,9 +3,10 @@ import { CreatePurchaseInput } from './dto/create-purchase.input';
 import { UpdatePurchaseInput } from './dto/update-purchase.input';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Purchase } from './entities/purchase.entity';
-import { Repository } from 'typeorm';
+import { FindConditions, Repository } from 'typeorm';
 import { User } from 'src/users/user.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
+import { FindPaginatedInput, PaginatedItems } from 'src/common/graphql';
 
 @Injectable()
 export class PurchasesService {
@@ -33,6 +34,21 @@ export class PurchasesService {
 
   findAllByUserId(userId: string) {
     return this.purchaseRepository.find({ where: { userId } });
+  }
+
+  async findPaginated({
+    page = 1,
+    perPage = 10,
+    where = [],
+  }: FindPaginatedInput<Purchase>): Promise<PaginatedItems<Purchase>> {
+    const [items, totalItems] = await this.purchaseRepository.findAndCount({
+      skip: (page - 1) * perPage,
+      take: perPage,
+      where,
+    });
+
+    const totalPages = Math.ceil(totalItems / perPage);
+    return { items, totalItems, currentPage: page, totalPages };
   }
 
   getUserById(id: string) {

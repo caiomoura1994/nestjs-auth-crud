@@ -35,6 +35,15 @@ export class PurchasesResolver {
     return this.purchasesService.findAllByUserId(user.id);
   }
 
+  @UseGuards(GqlAuthGuard)
+  @Query(() => [PurchaseOutput], { name: 'purchases' })
+  findPaginated(@Context() context) {
+    const { user } = context.req;
+    return this.purchasesService.findPaginated({
+      where: [{ userId: user.id }],
+    });
+  }
+
   @Query(() => PurchaseOutput, { name: 'purchase' })
   findOne(@Args('id', { type: () => Int }) id: string) {
     return this.purchasesService.findOne(id);
