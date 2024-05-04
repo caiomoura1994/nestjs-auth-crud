@@ -1,42 +1,52 @@
-import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation, Context } from '@nestjs/graphql';
 
-import { User } from './user.entity';
 import { UserService } from './user.service';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from '../auth/jwt-auth.guard';
+import { UserOutput } from './dto/user.output';
 
 @Resolver('User')
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
-  @Mutation(() => User)
-  async createUser(@Args('data') data: CreateUserInput): Promise<User> {
+  @Mutation(() => UserOutput)
+  async createUser(@Args('data') data: CreateUserInput): Promise<UserOutput> {
     return this.userService.createUser(data);
   }
 
   @UseGuards(GqlAuthGuard)
-  @Query(() => User)
-  async user(@Args('id') id: string): Promise<User> {
+  @Query(() => UserOutput)
+  async me(@Context() context): Promise<UserOutput> {
+    const { user } = context.req;
+    if (!user) {
+      throw new Error('Usuário não autenticado');
+    }
+    return this.userService.getUserById(user.id);
+  }
+
+  @UseGuards(GqlAuthGuard)
+  @Query(() => UserOutput)
+  async user(@Args('id') id: string): Promise<UserOutput> {
     return this.userService.getUserById(id);
   }
 
-  @Query(() => User)
-  async userByEmail(@Args('email') email: string): Promise<User> {
+  @Query(() => UserOutput)
+  async userByEmail(@Args('email') email: string): Promise<UserOutput> {
     return this.userService.getUserByEmail(email);
   }
 
-  @Query(() => [User])
-  async users(): Promise<User[]> {
+  @Query(() => [UserOutput])
+  async users(): Promise<UserOutput[]> {
     return await this.userService.findAllUsers();
   }
 
-  @Mutation(() => User)
+  @Mutation(() => UserOutput)
   async updateUser(
     @Args('id') id: string,
     @Args('data') data: UpdateUserInput,
-  ): Promise<User> {
+  ): Promise<UserOutput> {
     return this.userService.updateUser({ id, ...data });
   }
 

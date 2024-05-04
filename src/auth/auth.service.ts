@@ -32,6 +32,6 @@ export class AuthService {
 
   private async jwtToken(user: User): Promise<string> {
     const payload = { username: user.name, sub: user.id };
-    return this.jwtService.signAsync(payload);
+    return this.jwtService.signAsync(payload, { expiresIn: '12h' });
   }
 }

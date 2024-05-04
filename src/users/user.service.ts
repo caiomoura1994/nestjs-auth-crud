@@ -19,20 +19,20 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  async createUser(data: CreateUserInput): Promise<User> {
+  async createUser(input: CreateUserInput): Promise<User> {
     const userAlreadyExists = await this.userRepository.findOne({
-      where: { email: data.email },
+      where: { email: input.email },
     });
     if (userAlreadyExists)
       throw new HttpException('Email já cadastrado', HttpStatus.BAD_REQUEST);
-    const user = this.userRepository.create(data);
+    const user = this.userRepository.create(input);
     return this.userRepository.save(user);
   }
 
   async getUserById(id: string): Promise<User> {
     const user = await this.userRepository.findOne(id);
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
     return user;
   }
@@ -40,7 +40,7 @@ export class UserService {
   async getUserByEmail(email: string): Promise<User> {
     const user = await this.userRepository.findOne({ where: { email } });
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('Usuário não encontrado');
     }
     return user;
   }
@@ -49,9 +49,9 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async updateUser(data: UpdateUserInput): Promise<User> {
-    const user = await this.getUserById(data.id);
-    return this.userRepository.save({ ...user, ...data });
+  async updateUser(input: UpdateUserInput): Promise<User> {
+    const user = await this.getUserById(input.id);
+    return this.userRepository.save({ ...user, ...input });
   }
 
   async deleteUser(id: string): Promise<void> {
