@@ -9,6 +9,7 @@ import { UserModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
 import { PurchasesModule } from './purchases/purchases.module';
 import { CustomersModule } from './customers/customers.module';
+import { TodoItemModule } from './todo-item/todo-item.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { CustomersModule } from './customers/customers.module';
     AuthModule,
     PurchasesModule,
     CustomersModule,
+    TodoItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],

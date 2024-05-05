@@ -3,6 +3,7 @@ class CreateCustomer1714765376516 {
     await queryRunner.query(`
             CREATE TABLE "customers" (
                 "id" uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+                userId uuid REFERENCES users(id),
                 "name" character varying NOT NULL,
                 "email" character varying NOT NULL,
                 "createdAt" TIMESTAMP NOT NULL DEFAULT now(),

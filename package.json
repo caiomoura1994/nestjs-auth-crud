@@ -23,6 +23,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs-query/core": "^0.30.0",
+    "@nestjs-query/query-graphql": "^0.30.0",
+    "@nestjs-query/query-typeorm": "^0.30.0",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/graphql": "^7.6.0",

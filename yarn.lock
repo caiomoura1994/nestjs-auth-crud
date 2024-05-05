@@ -1327,6 +1327,41 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fetch-event-source/-/fetch-event-source-2.0.1.tgz#9ceecc94b49fbaa15666e38ae8587f64acce007d"
   integrity sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==
 
+"@nestjs-query/core@0.30.0", "@nestjs-query/core@^0.30.0":
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/@nestjs-query/core/-/core-0.30.0.tgz#2f86835a7b4d61e3a1c2f8b7ee7329a1041488ff"
+  integrity sha512-q2ykkGmC220LYkud6AGy8udyXspPSTVKHxAMwXMO/AsKEZkyT/kTEJdRoBPJqIs20Tdx8azDbEk4UCpb0l4Buw==
+  dependencies:
+    lodash.merge "^4.6.2"
+    reflect-metadata "^0.1.13"
+    tslib "^2.1.0"
+
+"@nestjs-query/query-graphql@^0.30.0":
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/@nestjs-query/query-graphql/-/query-graphql-0.30.0.tgz#9d22f6cfb13b77f3b56a64f9d00480cc36908bbd"
+  integrity sha512-nxy//6SOcsThr+1fE1wdfGm4SgiBzDWtxR1Uhbr7BefeEnqTqptbOn+W3wgayxg2bi89rcbCgn/gC7Mcum4BNw==
+  dependencies:
+    "@nestjs-query/core" "0.30.0"
+    graphql-fields "^2.0.3"
+    lodash.omit "^4.5.0"
+    lower-case-first "^2.0.1"
+    pluralize "^8.0.0"
+    tslib "^2.1.0"
+    upper-case-first "^2.0.1"
+
+"@nestjs-query/query-typeorm@^0.30.0":
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/@nestjs-query/query-typeorm/-/query-typeorm-0.30.0.tgz#1707e87e6e209fa3c6c881674563e90ee663cf18"
+  integrity sha512-D+bczx26ingz1Qq3/3Vj1asZUGNL7mPv4GD6QKtTyCCznQ5QOmurGr+TsdjcrIgm1PMZBXKNEG70n7KwZ6t9lg==
+  dependencies:
+    "@nestjs-query/core" "0.30.0"
+    camel-case "^4.1.2"
+    lodash.filter "^4.6.0"
+    lodash.merge "^4.6.2"
+    lodash.omit "^4.5.0"
+    tslib "^2.1.0"
+    uuid "^8.3.2"
+
 "@nestjs/cli@^7.0.0":
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-7.6.0.tgz#661f99b578284f9124307a8077f004a091b25e77"
@@ -3159,7 +3194,7 @@ camel-case@4.1.1:
     pascal-case "^3.1.1"
     tslib "^1.10.0"
 
-camel-case@4.1.2:
+camel-case@4.1.2, camel-case@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/camel-case/-/camel-case-4.1.2.tgz#9728072a954f805228225a6deea6b38461e1bd5a"
   integrity sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==
@@ -4903,6 +4938,11 @@ graphql-extensions@^0.15.0:
     apollo-server-env "^3.1.0"
     apollo-server-types "^0.9.0"
 
+graphql-fields@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-fields/-/graphql-fields-2.0.3.tgz#5e68dff7afbb202be4f4f40623e983b22c96ab8f"
+  integrity sha512-x3VE5lUcR4XCOxPIqaO4CE+bTK8u6gVouOdpQX9+EKHr+scqtK5Pp/l8nIGqIpN1TUlkKE6jDCCycm/WtLRAwA==
+
 graphql-subscriptions@^1.0.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-1.2.1.tgz#2142b2d729661ddf967b7388f7cf1dd4cf2e061d"
@@ -6356,6 +6396,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash.filter@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.filter/-/lodash.filter-4.6.0.tgz#668b1d4981603ae1cc5a6fa760143e480b4c4ace"
+  integrity sha512-pXYUy7PR8BCLwX5mgJ/aNtyOvuJTdZAo9EQFUvMIYugqmJxnrYaANvTbgndOzHSCSR0wnlBBfRXJL5SbWxo3FQ==
+
 lodash.includes@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.includes/-/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
@@ -6390,6 +6435,16 @@ lodash.memoize@4.x:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.merge@^4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
+  integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.omit@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
+  integrity sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==
 
 lodash.once@^4.0.0:
   version "4.1.1"
@@ -6450,6 +6505,13 @@ loose-envify@^1.0.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lower-case-first@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/lower-case-first/-/lower-case-first-2.0.2.tgz#64c2324a2250bf7c37c5901e76a5b5309301160b"
+  integrity sha512-EVm/rR94FJTZi3zefZ82fLWab+GX14LJN4HrWBcuo6Evmsl9hEfnqxgcHCKb9q+mNf6EVdsjx/qucYFIIB84pg==
+  dependencies:
+    tslib "^2.0.3"
 
 lower-case@^2.0.2:
   version "2.0.2"
@@ -7370,7 +7432,7 @@ please-upgrade-node@^3.2.0:
   dependencies:
     semver-compare "^1.0.0"
 
-pluralize@8.0.0:
+pluralize@8.0.0, pluralize@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
@@ -9014,6 +9076,13 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
+upper-case-first@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/upper-case-first/-/upper-case-first-2.0.2.tgz#992c3273f882abd19d1e02894cc147117f844324"
+  integrity sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==
+  dependencies:
+    tslib "^2.0.3"
+
 uri-js@^4.2.2:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"
@@ -9057,7 +9126,7 @@ uuid@8.3.1:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.1.tgz#2ba2e6ca000da60fce5a196954ab241131e05a31"
   integrity sha512-FOmRr+FmWEIG8uhZv6C2bTgEVXsHk08kE7mPlrBbEe+c3r9pjceVPgupIfNIhc4yx55H69OXANrUaSuu9eInKg==
 
-uuid@8.3.2, uuid@^8.0.0, uuid@^8.3.0:
+uuid@8.3.2, uuid@^8.0.0, uuid@^8.3.0, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
