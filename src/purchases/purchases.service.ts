@@ -3,7 +3,7 @@ import { CreatePurchaseInput } from './dto/create-purchase.input';
 import { UpdatePurchaseInput } from './dto/update-purchase.input';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Purchase } from './entities/purchase.entity';
-import { FindConditions, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { User } from 'src/users/user.entity';
 import { Customer } from 'src/customers/entities/customer.entity';
 import { FindPaginatedInput, PaginatedItems } from 'src/common/graphql';
