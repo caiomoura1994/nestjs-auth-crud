@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 export class CreateCustomer1714765376516 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`CREATE TABLE "customers" (
-        "id" uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
-        "user_id" uuid REFERENCES users(id),
+        "id" serial4 PRIMARY KEY,
+        "user_id" int4 REFERENCES users(id),
         "name" character varying NOT NULL,
         "email" character varying NOT NULL,
         "created_at" TIMESTAMP NOT NULL DEFAULT now(),
