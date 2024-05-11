@@ -6,7 +6,7 @@ import { UserOutput } from 'src/users/dto/user.output';
 @ObjectType()
 export class PurchaseOutput {
   @Field(() => ID)
-  id: string;
+  id: number;
 
   @Field()
   code: string;
@@ -21,13 +21,13 @@ export class PurchaseOutput {
   integrationCode: string;
 
   @Field()
-  customerId: string;
+  customerId: number;
 
   @Field(() => CustomerOutput)
   customer: CustomerOutput;
 
   @Field()
-  userId: string;
+  userId: number;
 
   @Field(() => UserOutput)
   user: UserOutput;

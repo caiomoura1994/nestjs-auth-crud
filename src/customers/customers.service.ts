@@ -28,11 +28,11 @@ export class CustomersService {
     return this.customerRepository.find();
   }
 
-  getUserById(id: string) {
+  getUserById(id: number) {
     return this.userRepository.findOne({ where: { id } });
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     return this.customerRepository.findOne(id);
   }
 
@@ -50,7 +50,7 @@ export class CustomersService {
     });
   }
 
-  remove(id: string) {
+  remove(id: number) {
     return this.customerRepository.softDelete(id);
   }
 }

@@ -30,7 +30,7 @@ export class CustomersResolver {
   }
 
   @Query(() => CustomerOutput, { name: 'customer' })
-  async findOne(@Args('id', { type: () => ID }) id: string) {
+  async findOne(@Args('id', { type: () => ID }) id: number) {
     const customer = await this.customersService.findOne(id);
     if (!customer) {
       throw new Error('Cliente não encontrado');
@@ -51,7 +51,7 @@ export class CustomersResolver {
   }
 
   @Mutation(() => CustomerOutput)
-  removeCustomer(@Args('id', { type: () => ID }) id: string) {
+  removeCustomer(@Args('id', { type: () => ID }) id: number) {
     return this.customersService.remove(id);
   }
 }

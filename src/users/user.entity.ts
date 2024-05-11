@@ -5,9 +5,9 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @ObjectType()
 @Entity({ name: 'users' })
 export class User {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   @Field(() => ID)
-  id: string;
+  id: number;
 
   @Column()
   name: string;

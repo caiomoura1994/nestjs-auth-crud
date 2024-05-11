@@ -45,7 +45,7 @@ export class PurchasesResolver {
   }
 
   @Query(() => PurchaseOutput, { name: 'purchase' })
-  findOne(@Args('id', { type: () => Int }) id: string) {
+  findOne(@Args('id', { type: () => Int }) id: number) {
     return this.purchasesService.findOne(id);
   }
 
@@ -70,7 +70,7 @@ export class PurchasesResolver {
   }
 
   @Mutation(() => PurchaseOutput)
-  removePurchase(@Args('id', { type: () => Int }) id: string) {
+  removePurchase(@Args('id', { type: () => Int }) id: number) {
     return this.purchasesService.remove(id);
   }
 }

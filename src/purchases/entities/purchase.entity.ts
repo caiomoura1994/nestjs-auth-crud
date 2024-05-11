@@ -1,13 +1,12 @@
 import { ObjectType, Field, ID, registerEnumType } from '@nestjs/graphql';
 import {
   Entity,
-  PrimaryColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
-import { v4 as uuidv4 } from 'uuid';
 
 export enum IntegrationPlatform {
   OMIE = 'OMIE',
@@ -22,9 +21,9 @@ registerEnumType(IntegrationPlatform, {
 @ObjectType()
 @Entity({ name: 'purchases' })
 export class Purchase {
-  @PrimaryColumn('uuid', { default: () => uuidv4() })
+  @PrimaryGeneratedColumn()
   @Field(() => ID)
-  id: string;
+  id: number;
 
   @Column()
   code: string;
@@ -43,10 +42,10 @@ export class Purchase {
   integrationCode: string;
 
   @Column({ name: 'customer_id' })
-  customerId: string;
+  customerId: number;
 
   @Column({ name: 'user_id' })
-  userId: string;
+  userId: number;
 
   @CreateDateColumn({ type: 'timestamp', name: 'created_at' })
   createdAt: Date;

@@ -4,7 +4,7 @@ import { UserOutput } from 'src/users/dto/user.output';
 @ObjectType()
 export class CustomerOutput {
   @Field(() => ID)
-  id: string;
+  id: number;
 
   @Field()
   name: string;
@@ -13,7 +13,7 @@ export class CustomerOutput {
   email: string;
 
   @Field()
-  userId: string;
+  userId: number;
 
   @Field(() => UserOutput)
   user: UserOutput;

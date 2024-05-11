@@ -29,7 +29,7 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  async getUserById(id: string): Promise<User> {
+  async getUserById(id: number): Promise<User> {
     const user = await this.userRepository.findOne(id);
     if (!user) {
       throw new NotFoundException('Usuário não encontrado');
@@ -51,10 +51,11 @@ export class UserService {
 
   async updateUser(input: UpdateUserInput): Promise<User> {
     const user = await this.getUserById(input.id);
-    return this.userRepository.save({ ...user, ...input });
+    this.userRepository.save({ ...user, ...input });
+    return user;
   }
 
-  async deleteUser(id: string): Promise<void> {
+  async deleteUser(id: number): Promise<void> {
     const user = await this.getUserById(id);
     const userDeleted = await this.userRepository.delete(user);
     if (!userDeleted) {

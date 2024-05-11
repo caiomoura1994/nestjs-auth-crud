@@ -1,18 +1,12 @@
 import { InputType, Field, ID } from '@nestjs/graphql';
-import {
-  IsOptional,
-  IsString,
-  IsUUID,
-  IsEnum,
-  IsNumber,
-} from 'class-validator';
+import { IsOptional, IsString, IsEnum, IsNumber } from 'class-validator';
 import { IntegrationPlatform } from '../entities/purchase.entity';
 
 @InputType()
 export class UpdatePurchaseInput {
   @Field(() => ID)
-  @IsUUID()
-  id: string;
+  @IsNumber()
+  id: number;
 
   @Field({ nullable: true })
   @IsOptional()
@@ -36,11 +30,11 @@ export class UpdatePurchaseInput {
 
   @Field({ nullable: true })
   @IsOptional()
-  @IsUUID()
-  customerId?: string;
+  @IsNumber()
+  customerId?: number;
 
   @Field({ nullable: true })
   @IsOptional()
-  @IsUUID()
-  userId?: string;
+  @IsNumber()
+  userId?: number;
 }

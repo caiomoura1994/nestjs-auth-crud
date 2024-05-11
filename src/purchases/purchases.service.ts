@@ -28,11 +28,11 @@ export class PurchasesService {
     return this.purchaseRepository.save(purchase);
   }
 
-  async getCustomerPurchases(customerId: string): Promise<Purchase[]> {
+  async getCustomerPurchases(customerId: number): Promise<Purchase[]> {
     return this.purchaseRepository.find({ where: { customerId } });
   }
 
-  findAllByUserId(userId: string) {
+  findAllByUserId(userId: number) {
     return this.purchaseRepository.find({ where: { userId } });
   }
 
@@ -51,23 +51,23 @@ export class PurchasesService {
     return { items, totalItems, currentPage: page, totalPages };
   }
 
-  getUserById(id: string) {
+  getUserById(id: number) {
     return this.userRepository.findOne(id);
   }
 
-  getCustomerById(id: string) {
+  getCustomerById(id: number) {
     return this.customerRepository.findOne(id);
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     return `This action returns a #${id} purchase`;
   }
 
-  update(id: string, updatePurchaseInput: UpdatePurchaseInput) {
+  update(id: number, updatePurchaseInput: UpdatePurchaseInput) {
     return `This action updates a #${id} purchase`;
   }
 
-  remove(id: string) {
+  remove(id: number) {
     return `This action removes a #${id} purchase`;
   }
 }

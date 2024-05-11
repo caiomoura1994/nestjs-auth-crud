@@ -1,11 +1,5 @@
 import { InputType, Field } from '@nestjs/graphql';
-import {
-  IsNotEmpty,
-  IsString,
-  IsUUID,
-  IsEnum,
-  IsNumber,
-} from 'class-validator';
+import { IsNotEmpty, IsString, IsEnum, IsNumber } from 'class-validator';
 import { IntegrationPlatform } from '../entities/purchase.entity';
 
 @InputType()
@@ -32,11 +26,11 @@ export class CreatePurchaseInput {
 
   @Field()
   @IsNotEmpty()
-  @IsUUID()
-  customerId: string;
+  @IsNumber()
+  customerId: number;
 
   @Field()
   @IsNotEmpty()
-  @IsUUID()
-  userId: string;
+  @IsNumber()
+  userId: number;
 }

@@ -3,16 +3,15 @@ import {
   IsEmail,
   IsNotEmpty,
   IsOptional,
+  IsNumber,
   IsString,
-  IsUUID,
 } from 'class-validator';
 
 @InputType()
 export class UpdateUserInput {
-  @IsString()
+  @IsNumber()
   @IsOptional()
-  @IsUUID()
-  id?: string;
+  id?: number;
 
   @IsOptional()
   @IsString()
