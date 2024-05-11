@@ -9,12 +9,12 @@ export const mockAddAccountParams: CreateUserInput = {
 };
 
 export const mockUpdateUserParams: UpdateUserInput = {
-  id: '1',
+  id: 1,
   email: 'email-updated@email.com',
 };
 
 export const mockUserModel: User = {
-  id: '1',
+  id: 1,
   ...mockAddAccountParams,
 };
 
@@ -26,12 +26,12 @@ export const mockUpdatedUserModel: User = {
 export const mockUserArrayModel: User[] = [
   mockUserModel,
   {
-    id: '2',
+    id: 2,
     name: 'Test User 2',
     email: 'email2@email.com',
   } as User,
   {
-    id: '3',
+    id: 3,
     name: 'Test User 3',
     email: 'email3@email.com',
   } as User,
